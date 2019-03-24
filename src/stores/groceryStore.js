@@ -26,6 +26,7 @@ class ShoppingList {
         this.list.forEach(i => console.log(i.name))
         let item = this.list.find(i => i.name === name)
         item.location = newLocation
+        
     }
     @action deleteItem = (name) => {
         let itemIndex = this.list.findIndex(i => i.name === name)
