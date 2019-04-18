@@ -1,13 +1,6 @@
 import { observable, action } from 'mobx'
+import { Item } from './Item'
 
-class Item {
-    @observable name
-    @observable completed = false
-    @observable location = 'Super Sell'
-    constructor(name) {
-        this.name = name
-    }
-}
 
 let potatoes = new Item("Potatoes")
 
