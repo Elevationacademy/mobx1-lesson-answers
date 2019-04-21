@@ -1,7 +1,7 @@
-export import { observable } from 'mobx'
+import { observable } from 'mobx'
 
 
-class Item {
+export class Item {
     @observable name
     @observable completed = false
     @observable location = 'Super Sell'

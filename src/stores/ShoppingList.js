@@ -2,9 +2,7 @@ import { observable, action } from 'mobx'
 import { Item } from './Item'
 
 
-let potatoes = new Item("Potatoes")
-
-class ShoppingList {
+export class ShoppingList {
     @observable list = []
     @observable length
     @action checkItem = (name) => {
@@ -27,8 +25,3 @@ class ShoppingList {
     } 
 }
 
-let groceryList = new ShoppingList()
-groceryList.list.push(potatoes)
-groceryList.addItem("hunter")
-
-export default groceryList

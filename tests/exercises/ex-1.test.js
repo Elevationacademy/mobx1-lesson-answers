@@ -1,19 +1,25 @@
 
-import { mount, render, shallow, configure} from 'enzyme';
+import { configure} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import store from '../../src/stores/groceryStore'
+import { ShoppingList } from '../../src/stores/ShoppingList';
 
 configure({ adapter: new Adapter() });
 
+let groceryList
 describe("exercise1", () => {
+    beforeAll(() => {
+        groceryList = new ShoppingList()
+    })
     it ('store should have an addItem function that adds a new Item to the stores list property', () => {
-        const addItem = store.addItem
+        const addItem = groceryList.addItem
+        expect(addItem, "store should have an addItem function").toBeDefined()
         addItem("test")
-        const test = store.list.find(i => i.name === "test")
-        expect(test).toBeTruthy()
+        const test = groceryList.list.find(i => i.name === "test")
+        expect(test, "the addItem function should add a new Item to the store's list property").toBeTruthy()
     })
     it ('addItem function should be a MobX action', () => {
-        const addItem = store.addItem
-        expect(addItem.isMobxAction).toBeTruthy()
+        const addItem = groceryList.addItem
+        expect(addItem, "store should have an addItem function").toBeDefined()
+        expect(addItem.isMobxAction, "the addItem function should be a Mobx action").toBeTruthy()
     })
 })
