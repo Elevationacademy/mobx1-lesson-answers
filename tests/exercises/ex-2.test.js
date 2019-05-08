@@ -1,9 +1,10 @@
 import React from 'react';
 import App from '../../src/App';
-import { render, configure} from 'enzyme';
+import { mount, configure} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import {isObservableProp } from 'mobx'
 import { ShoppingList } from '../../src/stores/ShoppingList';
+import Item from '../../src/components/Item'
 
 configure({ adapter: new Adapter() });
 
@@ -27,11 +28,8 @@ describe("exercise 2", () => {
             .toBe("Super Sell")
     })
     it('the location should be rendered next to each item', () => {
-        const wrapper = render(<App store = {groceryList}/>)
-        expect(wrapper.find('.location').first().length, "each item's location should be rendered with the class 'location'")
-            .toBeGreaterThan(0)
-        let location = wrapper.find('.location').first().html()
-        expect(location, "each item's location should be rendered with the class 'location'")
-            .toBeTruthy()
+        const wrapper = mount(<App store = {groceryList}/>)
+        expect(wrapper.find(Item).first().html().toLowerCase(), "Each item should be rendered with it's location")
+            .toContain("super sell")
     })
 })

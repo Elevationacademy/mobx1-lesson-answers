@@ -14,7 +14,6 @@ export class ShoppingList {
         this.list.push(newItem)
     }
     @action editItem = (name, newLocation) => {
-        this.list.forEach(i => console.log(i.name))
         let item = this.list.find(i => i.name === name)
         item.location = newLocation
         
